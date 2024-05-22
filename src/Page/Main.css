@@ -1,0 +1,56 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: content-box;
+    background-color: rgba(183, 182, 182, 0.555);
+}
+p{
+    margin: 0;
+}
+.card-body p{
+    font-size: 1.5rem;
+}
+.bt-i, .bt-d{
+    font-weight:bold  ;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 1px solid gray ;
+}
+.bt-d{
+    border-radius: 5px 0 0 5px;
+}
+.bt-i{
+    border-radius: 0 5px  5px 0;
+}
+.dis-a {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding:  0 10px ;
+}
+.amount{
+    display: flex;
+    gap: 10px;
+}
+.cart-i{
+    position: relative;
+}
+.circle-num{
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    top: -8px;
+    right : -6px;
+    padding: 0 3px ;
+    min-width: 22px;
+    width: fit-content;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+}
+.submit{
+    border-radius: 5px;
+    border :1px solid grey
+}
+.submit:active{
+    background-color: rgb(192, 190, 190);
+}

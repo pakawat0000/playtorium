@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Shirt",
+        "price": 350,
+        "xmlns": "https://indyt-shirt.com/image/wi/fg/202210/FOREVERColorChart_200811_54.jpg"
+
+    },
+    {
+        "name": "Hat",
+        "price": 250,
+        "xmlns": "https://indyt-shirt.com/image/wi/fg/202210/FOREVERColorChart_200811_54.jpg"
+    },
+    {
+        "name": "Belt",
+        "price": 230,
+        "xmlns": "https://indyt-shirt.com/image/wi/fg/202210/FOREVERColorChart_200811_54.jpg"
+    }
+]

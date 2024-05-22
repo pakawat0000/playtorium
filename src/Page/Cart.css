@@ -1,0 +1,15 @@
+
+.Body h1{
+    color: white;
+}
+.header{
+    background-color: white;
+    border: rgb(105, 105, 105);
+}
+.hd-left{
+    width:300px;
+}
+.hd-left p{
+    width: 100px;
+    text-align: center;
+}
