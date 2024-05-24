@@ -24,7 +24,7 @@ function Cart_page() {
   };
 
   const Confirm = (total_price, total_discount) => {
-   settotal_dis(total_discount);
+    settotal_dis(total_discount);
     settotal(total_price);
   };
   const openPop = () => {
@@ -37,7 +37,7 @@ function Cart_page() {
     const clearLocalStorage = () => {
       localStorage.clear();
     };
-    window.addEventListener('beforeunload', clearLocalStorage);
+    window.addEventListener("beforeunload", clearLocalStorage);
     return () => {
       window.removeEventListener("beforeunload", clearLocalStorage);
     };
@@ -83,6 +83,22 @@ function Cart_page() {
         <button onClick={openPop} className=" btn btn-success mx-3">
           Discount code
         </button>
+      </div>
+      <div
+        style={{ background: "white", borderRadius: "3px" }}
+        className="container mt-5 "
+      >
+        {" "}
+        <p>
+          {" "}
+          {`* The logic of apply discount is you have to select the cupon>ontop>seasonal you have to select cupon first to use the ontop and you have to use ontop before using seasonal the total discount and each discount wil appear for you to check `}
+        </p>
+      </div>
+      <div
+        style={{ background: "white", borderRadius: "3px" }}
+        className="container mt-3"
+      >
+        <p> {`* i didnt have time to finish the delete or clear item so if you want to try it again please click at the Word 'Shop' at the top-left to go back`}</p>
       </div>
     </div>
   );

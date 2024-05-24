@@ -56,6 +56,7 @@ function Main_page() {
           })}
         </div>
       </div>
+      <div style={{background:'white',borderRadius:'3px'}} className="container mt-5 "> <p> * when finish adding item to cart press the Shopping Cart icon to navigate to the Cart page</p></div>
     </div>
   );
 }

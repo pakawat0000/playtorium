@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-pascal-case */
+
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main_page from "./Page/Main_page";
@@ -17,3 +17,5 @@ function App() {
 }
 
 export default App;
+
+
