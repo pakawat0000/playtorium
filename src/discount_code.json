@@ -1,8 +1,8 @@
 [
-  { "type": "fix", "category":"cupon", "amount": 50 },
-  { "type": "percent", "category": "cupon", "percent": 20 },
-  { "type": "percent_cata","category": "ontop","percent": 20 },
-  { "type": "point", "category": "ontop", "points": 0 },
-  { "type": "campaigns","category": "seasonal","base_spend":300, "amount": 40 }
+  { "type": "fix", "description":"discount 50 bath", "category":"cupon", "amount": 50 },
+  { "type": "percent","description":"discount 20% of total price", "category": "cupon", "percent": 20 },
+  { "type": "percent_category","description":" discount 20% of for item in CLOTH category","category": "ontop","percent": 20 },
+  { "type": "point", "description":"discount 1 bath per 1 point ", "category": "ontop", "points": 0 },
+  { "type": "campaigns", "description": "every 300 bath spend get 40 bath discount","category": "seasonal","base_spend":300, "amount": 40 }
 ]
 

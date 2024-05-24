@@ -1,20 +1,22 @@
-import React, { useReducer, useEffect, useState } from "react";
+import React, { useReducer, useState } from "react";
 import "./Discount_pop.css";
-const initialState = {
-  total: localStorage.getItem("total_price"),
-  appliedDiscounts: {
-    cupon: null,
-    ontop: null,
-    seasonal: null,
-  },
-};
+
 function DiscountPop(props) {
+  const local_store_price = localStorage.getItem("total_price");
+  const initialState = {
+    total: local_store_price,
+    appliedDiscounts: {
+      cupon: null,
+      ontop: null,
+      seasonal: null,
+    },
+  };
   const discounts = require("../discount_code.json");
   const [total_discount, settotal_discount] = useState(0);
   const [each_dis, seteach_dis] = useState({
     fix: 0,
     percent: 0,
-    percent_cata: 0,
+    percent_category: 0,
     point: 0,
     campaigns: 0,
   });
@@ -50,7 +52,7 @@ function DiscountPop(props) {
               return { ...previse, [action.discountType]: dis_percent };
             });
             return state;
-          case "percent_cata":
+          case "percent_category":
             let cloth_price = 0;
             props.data.forEach((item) => {
               if (item.category === "cloth") {
@@ -58,15 +60,18 @@ function DiscountPop(props) {
               }
             });
 
-            const dis_percent_cata =
+            const dis_percent_category =
               cloth_price * (discountToAdd.percent / 100);
             settotal_discount((previse) => {
-              return previse + dis_percent_cata;
+              return previse + dis_percent_category;
             });
-            state.total -= dis_percent_cata;
+            state.total -= dis_percent_category;
             state.appliedDiscounts.ontop = "percent";
             seteach_dis((previse) => {
-              return { ...previse, [action.discountType]: dis_percent_cata };
+              return {
+                ...previse,
+                [action.discountType]: dis_percent_category,
+              };
             });
             return state;
           case "point":
@@ -116,19 +121,19 @@ function DiscountPop(props) {
             state.total += each_dis[action.discountType];
             state.appliedDiscounts.cupon = null;
             return state;
-          case "percent_cata":
+          case "percent_category":
             let cloth_price = 0;
             props.data.forEach((item) => {
               if (item.category === "cloth") {
                 cloth_price += item.totalprice;
               }
             });
-            const dis_percent_cata =
+            const dis_percent_category =
               cloth_price * (discountToRemove.percent / 100);
             settotal_discount((previse) => {
-              return previse - dis_percent_cata;
+              return previse - dis_percent_category;
             });
-            state.total += dis_percent_cata;
+            state.total += dis_percent_category;
 
             state.appliedDiscounts.ontop = null;
             seteach_dis((previse) => {
@@ -144,7 +149,6 @@ function DiscountPop(props) {
             return state;
           case "campaigns":
             const discount_cam = each_dis.campaigns;
-            console.log("remove_Cam", discount_cam);
             settotal_discount((previse) => {
               return previse - discount_cam;
             });
@@ -170,7 +174,7 @@ function DiscountPop(props) {
   const [isdis, setisdis] = useState({
     fix: true,
     percent: true,
-    percent_cata: false,
+    percent_category: false,
     point: false,
     campaigns: false,
   });
@@ -196,7 +200,7 @@ function DiscountPop(props) {
             [type]: true,
             [other_type]: false,
             [other_cate.point]: true,
-            [other_cate.percent_cata]: true,
+            [other_cate.percent_category]: true,
           };
         });
       } else {
@@ -206,7 +210,7 @@ function DiscountPop(props) {
             [type]: true,
             [other_type]: true,
             [other_cate.point]: false,
-            [other_cate.percent_cata]: false,
+            [other_cate.percent_category]: false,
           };
         });
       }
@@ -280,7 +284,7 @@ function DiscountPop(props) {
     setisdis({
       fix: true,
       percent: true,
-      percent_cata: false,
+      percent_category: false,
       point: false,
       campaigns: false,
     });
@@ -288,14 +292,10 @@ function DiscountPop(props) {
 
     props.onClose();
   };
-
   useState(() => {
-    const clearLocalStorage = () => {
-      localStorage.clear();
-    };
-    window.addEventListener("beforeunload", clearLocalStorage);
+    window.addEventListener("beforeunload", localStorage.clear());
     return () => {
-      window.removeEventListener("beforeunload", clearLocalStorage);
+      window.removeEventListener("beforeunload", localStorage.clear());
     };
   }, []);
 
@@ -315,7 +315,7 @@ function DiscountPop(props) {
               className="input-group-text py-3  mt-2 d-flex justify-content-between"
               key={discount.type}
             >
-              <div className="d-flex gap-2">
+              <div className="d-flex gap-2  align-items-center">
                 <input
                   onChange={(e) =>
                     handleCheckboxChange(discount, e.target.checked)
@@ -325,10 +325,23 @@ function DiscountPop(props) {
                   type="checkbox"
                   // checked={state.appliedDiscounts[discount.category]=== discount.type}
                   disabled={!isdis[discount.type]}
-                  style={{border:isdis[discount.type]?'solid 1.5px blue':'none'}}
+                  style={{
+                    border: isdis[discount.type] ? "solid 1.5px blue" : "none",
+                  }}
                   aria-label={`Checkbox for ${discount.type}`}
                 />
-                <p style={{fontSize:'1rem',color : isdis[discount.type]?'black':'grey'}}>{discount.type}</p>
+                <div className="d-flex flex-column justify-content-start">
+                <p
+                  className="text-start"
+                  style={{
+                    fontSize: "1rem",
+                    color: isdis[discount.type] ? "black" : "grey",
+                  }}
+                >
+                  {discount.type}
+                </p>
+                <p style={{fontSize:'0.7rem' ,color: isdis[discount.type] ? "black" : "grey"}}>{`(${discount.description} )`}</p>
+                </div>
               </div>
               {discount.type === "point" ? (
                 <input
@@ -348,7 +361,9 @@ function DiscountPop(props) {
                   value={point > state.total * 0.2 ? state.total * 0.2 : point}
                   max={state.total * 0.2}
                 ></input>
-              ):(<p>{each_dis[discount.type]} bath</p>)}
+              ) : (
+                <p style={{color: isdis[discount.type] ? "black" : "grey",}}>{each_dis[discount.type]} bath</p>
+              )}
             </div>
           ))}
           <div className="mt-3 d-flex justify-content-between">
