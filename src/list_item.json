@@ -2,17 +2,26 @@
     {
         "name": "Shirt",
         "price": 350,
-        "xmlns": "https://indyt-shirt.com/image/wi/fg/202210/FOREVERColorChart_200811_54.jpg"
+        "xmlns": "https://indyt-shirt.com/image/wi/fg/202210/FOREVERColorChart_200811_54.jpg",
+        "category":"cloth"
 
     },
     {
         "name": "Hat",
         "price": 250,
-        "xmlns": "https://indyt-shirt.com/image/wi/fg/202210/FOREVERColorChart_200811_54.jpg"
+        "xmlns": "https://th.mlb-korea.com/cdn/shop/products/8809930088797_03_JPG.jpg?v=1694600569",
+        "category":"cloth"
     },
     {
         "name": "Belt",
         "price": 230,
-        "xmlns": "https://indyt-shirt.com/image/wi/fg/202210/FOREVERColorChart_200811_54.jpg"
+        "xmlns": "https://www.maverickshoes.com/wp-content/uploads/2020/11/DSCF9160-scaled.jpg",
+        "category":"cloth"
+    },
+    {
+        "name": "Phone",
+        "price": 12000,
+        "xmlns": "https://static-jaymart.com/ecom/public/2ETW4jy5sHhfuqBMz8pjjwafhFs.jpg",
+        "category":"electronic"
     }
 ]

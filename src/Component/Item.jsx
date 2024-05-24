@@ -9,7 +9,8 @@ function Item(props) {
       name: props.item.name,
       price: props.item.price,
       xmlns: props.item.xmlns,
-      amount: state.amount,
+      amount: state.amount, 
+      category : props.item.category,
       totalprice: props.item.price * state.amount,
     };
     switch (action.type) {
@@ -24,16 +25,19 @@ function Item(props) {
       case "reset":
         props.Submit(item_detail);
         return { amount: 0 };
+      default:
+        console.log("tyep not match");
     }
   }
 
   return (
-    <div className="col ">
-      <div className="card shadow-sm">
+    <div className="col p-3">
+      <div className="card shadow-sm" style={{maxWidth: '17rem'}}>
         <img
+          alt=""
           className="bd-placeholder-img card-img-top"
-          width="1%"
-          height="150"
+          width="100%"
+          height="200"
           src={props.item.xmlns}
         ></img>
         <div className="card-body">

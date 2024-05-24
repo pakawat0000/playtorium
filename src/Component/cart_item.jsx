@@ -1,10 +1,11 @@
 import React from "react";
-function Cart_item(props) {
+function CartItem(props) {
     const item = props.items
   return (
     <div className=" mx-5 mt-2 d-flex justify-content-between align-items-center header">
       <div className=" d-flex  gap-3 mx-3 ">
         <img
+        alt=""
          width="70"
          height="70"
          viewBox="0 0 100 100"
@@ -19,4 +20,4 @@ function Cart_item(props) {
   );
 }
 
-export default Cart_item;
+export default CartItem;

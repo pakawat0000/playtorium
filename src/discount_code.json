@@ -1,0 +1,8 @@
+[
+  { "type": "fix", "category":"cupon", "amount": 50 },
+  { "type": "percent", "category": "cupon", "percent": 20 },
+  { "type": "percent_cata","category": "ontop","percent": 20 },
+  { "type": "point", "category": "ontop", "points": 0 },
+  { "type": "campaigns","category": "seasonal","base_spend":300, "amount": 40 }
+]
+

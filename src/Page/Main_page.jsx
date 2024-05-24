@@ -50,7 +50,7 @@ function Main_page() {
         </div>
       </div>
       <div className="container mt-5 ">
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div className="row row-cols-1 row-cols-sm-2 g-sm-2 row-cols-md-2 row-cols-lg-3 row-col-xl-4 g-2 ">
           {list_item.map((item, index) => {
             return <Item key={index} Submit={Submit} item={item} />;
           })}
